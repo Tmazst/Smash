@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const myDiv = document.querySelectorAll('.welcome-advert');
     const slides = document.querySelectorAll('.adv-cont');
     var toggleButton = document.querySelector('#close-button');
-    let currentSlide = 1;
+    let currentSlide = 4;
   
     // if (window.innerWidth =< 700){}
     // Show first slide immediately
