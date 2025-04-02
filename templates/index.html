@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+
+    .form-fields{display:flex;flex-direction:column;}
+    .sub-topics{margin: 0 auto;height:80px;width:60%;}
+    .price-tag{font-size:30px;font-weight: 600;color: rgb(116, 101, 96)}
+    .search-cont{background-color:;display: flex;justify-content:center;padding:10px}
+    .search-cont input{border: 1px solid grey;border-radius:10px;padding: 5px;}
+    .availability{border-radius:5px;padding:5px 10px;background-color: coral;color:antiquewhite;font-weight: 600;}
+    .location{font-size:20px !important}
+    .sub-topics h1,small,p{text-align: center}
+    .sel-info-cont{display: flex;justify-content: center;align-items: center;}
+    .sel-info-cont p{text-wrap: nowrap}
+    .right-section{display: none;}
+    .left-section{display: none;}
+    .h2,h3{
+        font-weight: 500;color:rgb(64, 64, 65)
+    }
+    .menu-sections{box-shadow: 0 2px 20px rgba(0,0,0,0.4);background-color: white;padding:20px;border-radius: 20px}
+    
+/* section{ background-image:url(static/images/bg_service.png) } */
+
+    /* section{ background-image:url(static/images/bg_service.png) } */
+</style>
+
+<div style="width:;margin:0 auto;background-color:;">
+    <!-- <a id="contact_us"></a> -->
+    <section style="background-color:;" id="" class="services hidden">
+        <!-- Flash message -->
+
+        <div class="flash-messages ">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for  category, message in messages %}
+                        <div class="flash-messages alert-{{category}}"> {{message}}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div><br>
+
+    </section>
+</div>
+
+
+<!-- #Modal  -->
+<div class="welcome-advert gen-flex-col">
+    <div style="position: relative;width:100%;height:100vh;padding:20px;" class="gen-flex-col">
+        <div class="overlay"></div>
+        <div class="top-ad-details gen-flex">
+            <img class="logo-atad" style="" src="static/icons/eq_png_shadow.png" />
+            <div class="filler"></div>
+            <div class="ad-info gen-flex">
+                <a href="/menu"><div class="btns order-btn">Order Live</div></a>
+                <div class="call gen-flex"><img src="static/icons/contact.png" /> (+268) 7688 2106 </div>
+                <div class="call gen-flex"><img src="static/icons/email-icon.png" /> orders@smashb.eg </div>
+            </div>
+
+            <!-- <div class="ad-info gen-flex">
+                <div class="call gen-flex"><img src="static/icons/fb-icon.png" /></div>
+                <div class="call gen-flex"><img src="static/icons/insta-icon.png" /></div>
+                
+            </div> -->
+        </div>
+
+        <div class="slideshow-container gen-flex-col">
+            <!-- <div style="" class="adv-cont gen-flex-col"><br>
+                <div style="margin: 0 auto;width:max-content" class="gen-flex">
+                    <img style="height:400px" id="weareopen" class="advert-img" src="static/images/glob_images/we're open.png" /></div><br>
+                <div style="margin: 0 auto;width: max-content;"><label style="color:rgb(255, 254, 254);text-align: center;margin: 0 auto;width: max-content;" class="order-btn">Order Now
+                </label></div>
+            </div> -->
+            <div class="adv-cont">
+                <h1 class="advert"> Enjoy our cozy atmosphere and delectable sides😍👌. Come taste the love in every bite today!
+                </h1>
+            </div>
+
+            <div class="adv-cont">
+                <img style="height: 600px;border-radius: 15px;" src="static/images/45132-03.png" >
+            </div>
+
+            <div class="adv-cont">
+                <img style="height: 600px;border-radius: 15px;" src="static/images/45132-04-04.png" >
+            </div>
+
+            <div class="adv-cont">
+                <img style="height: 600px;" src="static/icons/weareopen.png" >  
+            </div>
+
+            <div class="adv-cont">
+                <img style="height: 600px;" src="static/images/45132-06.png" >  
+            </div>
+            
+            <a href="/menu"><div class="btns order-btn">Order Live</div></a>
+            
+        </div>
+        <div style="flex-grow:1"></div>
+        <div style="z-index: 1603;cursor: pointer;" id="close-button" onclick="closeAdverts()" class="btns go-btn">Go</div>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+
+<div style="gap:10px"  class="nav-icons-cont gen-flex-col">
+    <div style="gap:10px" class="gen-flex">
+        <a href="/menu" ><div class="nav-icon gen-flex-col"><img src="static/icons/menu2-icon.png" /><span>Live Menu</span></div></a>
+        <a href="/menu-list" > <div class="nav-icon gen-flex-col"><img src="static/icons/order-icon.png" /><span>Order</span></div></a>
+    </div>
+    <div style="gap:10px"  class="gen-flex">
+        <a href="#" ><div class="nav-icon gen-flex-col"><img src="static/icons/order-history-icon.png" /><span>Order History</span></div></a> 
+        <a href="#" ><div class="nav-icon gen-flex-col"><img src="static/icons/delivery-icon.png" /><span>Request Delivery</span></div></a>
+    </div>
+    <div style="gap:10px"  class="gen-flex">
+        <a href="#" ><div class="nav-icon gen-flex-col"><img src="static/icons/specials-icon.png" /><span>Specials</span></div></a>
+        <a href="#" ><div class="nav-icon gen-flex-col"><img src="static/icons/rewards-icon.png" /><span>Points & Rewards</span></div></a>
+    </div>
+</div>
+<br>
+
+<div class="space-filler"></div>
+
+<script>
+
+    var btn = document.querySelectorAll(".layout-icons");
+
+    // Load the active button from localStorage
+    var activeButton = localStorage.getItem("activeLayBtn");
+    if (activeButton) {
+        btn.forEach(eabtn => {
+            if (eabtn.textContent.trim() === activeButton) {
+                eabtn.classList.add("active"); // Add the active class if it matches
+                console.log("Check Btn: ", eabtn.textContent.trim())
+            }
+        });
+    };
+
+
+    btn.forEach(eabtn => { 
+        eabtn.addEventListener("click", function() {
+            btn.preventDefault();
+            // Remove 'active' class from all buttons
+            btn.forEach(button => button.classList.remove("active"));
+            // Add 'active' class to the clicked button
+            this.classList.add("active");
+
+            console.log("Check Btn: ", this.textContent.trim())
+
+            // Save the clicked button's text to localStorage
+            localStorage.setItem("activeLayBtn", this.textContent.trim());
+        });
+    });
+
+    var btn = document.querySelectorAll(".opts-btns");
+var allBtn = document.querySelectorAll("#all-btn");
+
+// Load the active button from localStorage
+var activeButton = localStorage.getItem("activeButton");
+if (activeButton) {
+    btn.forEach(eabtn => {
+        if (eabtn.textContent.trim() === activeButton) {
+            eabtn.classList.add("active"); // Add the active class if it matches
+        }
+    });
+};
+
+
+btn.forEach(eabtn => { 
+    eabtn.addEventListener("click", function() {
+        // Remove 'active' class from all buttons
+        btn.forEach(button => button.classList.remove("active"));
+        // allBtn.classList.remove("active");
+        // Add 'active' class to the clicked button
+        this.classList.add("active");
+
+        // Save the clicked button's text to localStorage
+        localStorage.setItem("activeButton", this.textContent.trim());
+    });
+});
+
+
+
+
+    var cont = document.getElementById("dynamic-after");
+
+    cont.style.setProperty('--after-content','"(updated)"');
+
+</script>
+{% endblock %}
