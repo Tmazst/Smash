@@ -2730,12 +2730,24 @@ img:hover {opacity: 0.7;}
     font-size:25px !important;
 }
 
+.call img{
+    height:40px !important;
+}
+
+.call:nth-child(3){
+    font-weight:400 !important;
+}
+
+.ad-info{
+    flex-direction: column !important;
+}
+
 .ad-info .order-btn{
     display: none;
 }
 
 .top-ad-details{
-    flex-direction: column !important;
+    /* flex-direction: column !important; */
 }
 
 .adv-cont{
@@ -2748,18 +2760,22 @@ img:hover {opacity: 0.7;}
     width:100%;
 
 }
-    .advert-img{
+.advert-img{
     height:300px !important;
     width:80% !important;
     margin: 0 auto;
 }
 .slideshow-container{
     height:auto !important;
+    width:100% 
 }
 .logo-atad{
-    height:100px;
+    height:70px;
 }
 
+#filler-01{
+    display: none;
+}
 
 #nav-div-cont{
         display: none !important;
